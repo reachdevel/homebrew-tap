@@ -1,18 +1,10 @@
 class Neotools < Formula
   desc "Native macOS replacements for du, df, top, find, lsof, ps and rm"
   homepage "https://github.com/reachdevel/neotools"
-  url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "9b9c2091905122c540c8a0edc2c26eba44cc4c80bfa30cc4ab12d21e10fee68f"
+  url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "7bd7506fefb06cfc025015c7ff9850a2d60367a50fbdddad8408c2f8ae50cad1"
   license "MIT"
-  revision 1
   head "https://github.com/reachdevel/neotools.git", branch: "main"
-
-  bottle do
-    root_url "https://github.com/reachdevel/homebrew-tap/releases/download/neotools-0.1.0_1"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "303530a1be019f1a0da4744c251bd9dd872b6a3f4a0c049d7a9c4571e023c7b2"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e9a43daf17a1314d68dbe3961daadbad1483b1bcb47df822d491f1512b3d644f"
-    sha256 cellar: :any_skip_relocation, sequoia:       "60a726827e5b211031668198e07fa01f9b46e708988d9de5b962899d46800171"
-  end
 
   depends_on macos: :sonoma
 
@@ -56,11 +48,18 @@ class Neotools < Formula
   end
 
   test do
-    assert_match "neodu 0.1.0", shell_output("#{bin}/neodu --version")
+    assert_match "neodu 0.1.1", shell_output("#{bin}/neodu --version")
     # the help comes from the translation bundle next to the commands
     with_env(NEO_LANG: "en") do
       assert_match "iCloud", shell_output("#{bin}/neodu --help")
     end
     assert_match "Mem:", shell_output("#{bin}/neofree")
+    # text from the String Catalog (a build without Xcode's string compiler once printed bare keys)
+    (testpath/"dir").mkpath
+    touch testpath/"dir/a"
+    touch testpath/"dir/b"
+    out = shell_output("#{bin}/neotree --plain #{testpath}/dir")
+    assert_match "1 directory, 2 files", out
+    refute_match "[tree.", out
   end
 end
