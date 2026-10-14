@@ -35,7 +35,7 @@ jobs:
       - name: Select the newest Xcode
         if: runner.os == 'macOS'
         run: |
-          newest="$(ls -d /Applications/Xcode_*.app | sort -V | tail -n 1)"
+          newest="$(printf "%s\n" /Applications/Xcode_*.app | sort -V | tail -n 1)"
           sudo xcode-select -s "$newest"
           swift --version
 
