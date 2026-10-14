@@ -9,7 +9,7 @@ outgrown (`du`, `df`, `top`, `find`, `lsof`, `ps`, `rm`, `tree` and more), writt
 brew install reachdevel/tap/neotools
 ```
 
-Or `brew tap reachdevel/tap` once, and then `brew install neotools`. The formula builds from source with Xcode 16 or newer (macOS 14
+Or `brew tap reachdevel/tap` once, and then `brew install neotools`. The formula builds from source with the Command Line Tools 16 or newer, no Xcode needed (macOS 14
 or newer) and takes a minute or two.
 
 ## Formulae

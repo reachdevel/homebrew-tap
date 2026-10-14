@@ -6,10 +6,17 @@ class Neotools < Formula
   license "MIT"
   head "https://github.com/reachdevel/neotools.git", branch: "main"
 
-  depends_on xcode: ["16.0", :build]
   depends_on macos: :sonoma
 
   def install
+    # Swift 6 ships with the Command Line Tools (16 or newer) as well as with Xcode,
+    # so the full Xcode app is not needed.
+    swift_major = Utils.safe_popen_read("swift", "--version")[/Swift version (\d+)/, 1].to_i
+    if swift_major < 6
+      odie "neotools needs Swift 6: update the Command Line Tools (Software Update, or " \
+           "`sudo rm -rf /Library/Developer/CommandLineTools && xcode-select --install`)."
+    end
+
     system "swift", "build", "--configuration", "release", "--disable-sandbox"
 
     commands = %w[
