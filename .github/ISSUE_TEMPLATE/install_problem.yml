@@ -1,0 +1,26 @@
+name: Install problem
+description: "`brew install`, `brew upgrade` or `brew uninstall` of neotools failed or did something unexpected"
+labels: ["bug"]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: macOS and chip
+      description: "For example: macOS 15.5, Intel. Output of `sw_vers` and `uname -m`."
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `brew config`
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: The command and everything it printed
+      description: "Paste text, not a screenshot. For a failed build, run again with `--verbose` and paste the end of the log."
+      render: text
+    validations:
+      required: true

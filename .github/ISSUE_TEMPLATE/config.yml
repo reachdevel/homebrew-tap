@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: A neotools command misbehaves
+    url: https://github.com/reachdevel/neotools/issues/new/choose
+    about: Wrong output, a crash, a missing option or a feature request go to the neotools repository.
+  - name: Report a security vulnerability
+    url: https://github.com/reachdevel/homebrew-tap/security/advisories/new
+    about: Private report. Please do not open a public issue for a vulnerability.
