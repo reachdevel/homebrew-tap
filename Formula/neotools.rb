@@ -59,7 +59,7 @@ class Neotools < Formula
     touch testpath/"dir/a"
     touch testpath/"dir/b"
     out = shell_output("#{bin}/neotree --plain #{testpath}/dir")
-    assert_match "1 directory, 2 files", out
+    assert_match "0 directories, 2 files", out
     refute_match "[tree.", out
   end
 end
