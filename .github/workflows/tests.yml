@@ -17,7 +17,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ macos-26 ]
+        os: [ macos-14, macos-15, macos-26, macos-15-intel ]
         include:
           - os: ubuntu-latest
             container:
@@ -31,6 +31,14 @@ jobs:
       contents: read
       pull-requests: read
     steps:
+      # neotools needs Swift 6 (Xcode 16 or newer); the runner images keep several Xcodes side by side
+      - name: Select the newest Xcode
+        if: runner.os == 'macOS'
+        run: |
+          newest="$(ls -d /Applications/Xcode_*.app | sort -V | tail -n 1)"
+          sudo xcode-select -s "$newest"
+          swift --version
+
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@e99025eb970cfa124b8284a35463d87426917478 # 2026.09.28.1

@@ -4,6 +4,7 @@ class Neotools < Formula
   url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "9b9c2091905122c540c8a0edc2c26eba44cc4c80bfa30cc4ab12d21e10fee68f"
   license "MIT"
+  revision 1
   head "https://github.com/reachdevel/neotools.git", branch: "main"
 
   depends_on macos: :sonoma
