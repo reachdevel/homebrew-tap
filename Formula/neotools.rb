@@ -7,6 +7,13 @@ class Neotools < Formula
   revision 1
   head "https://github.com/reachdevel/neotools.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/reachdevel/homebrew-tap/releases/download/neotools-0.1.0_1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "303530a1be019f1a0da4744c251bd9dd872b6a3f4a0c049d7a9c4571e023c7b2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e9a43daf17a1314d68dbe3961daadbad1483b1bcb47df822d491f1512b3d644f"
+    sha256 cellar: :any_skip_relocation, sequoia:       "60a726827e5b211031668198e07fa01f9b46e708988d9de5b962899d46800171"
+  end
+
   depends_on macos: :sonoma
 
   def install
