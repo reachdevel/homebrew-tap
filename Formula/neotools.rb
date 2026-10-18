@@ -1,5 +1,5 @@
 class Neotools < Formula
-  desc "Native macOS replacements for du, df, top, find, lsof, ps, rm and a disk cleaner"
+  desc "macOS replacements for du, df, top, find, lsof, ps, rm and a disk cleaner"
   homepage "https://github.com/reachdevel/neotools"
   url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.2.0.tar.gz"
   sha256 "e945660ab160149337026f3037a9006b0a188a39b2791e139a1a4f73afc3ae27"
