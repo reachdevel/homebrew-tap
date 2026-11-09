@@ -1,10 +1,17 @@
 class Neotools < Formula
   desc "macOS replacements for du, df, top, find, lsof, ps, rm and a disk cleaner"
   homepage "https://github.com/reachdevel/neotools"
-  url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "0dfbfeac873848e951a7a2cce6201ce06ab3c45c445eabebf1a66383ef9e31b4"
+  url "https://github.com/reachdevel/neotools/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "e945660ab160149337026f3037a9006b0a188a39b2791e139a1a4f73afc3ae27"
   license "MIT"
   head "https://github.com/reachdevel/neotools.git", branch: "main"
+
+  bottle do
+    root_url "https://github.com/reachdevel/homebrew-tap/releases/download/neotools-0.2.0"
+    sha256                               arm64_tahoe:   "e76ba4d0de049e945ed499c50c3cb00393a6bccabb1b6ed5c0fd297531e2c19e"
+    sha256                               arm64_sequoia: "7e948f75c3f90b91a8cd164df33eb1481471b46494e1d028a515d06d796d2884"
+    sha256 cellar: :any_skip_relocation, sequoia:       "285917533821d825fb448e4622eeb2ebe16185ea6fe333d59eadbddaa4a735e0"
+  end
 
   depends_on macos: :sonoma
 
@@ -49,8 +56,8 @@ class Neotools < Formula
   end
 
   test do
-    assert_match "neodu 0.2.1", shell_output("#{bin}/neodu --version")
-    assert_match "neosweep 0.2.1", shell_output("#{bin}/neosweep --version")
+    assert_match "neodu 0.2.0", shell_output("#{bin}/neodu --version")
+    assert_match "neosweep 0.2.0", shell_output("#{bin}/neosweep --version")
     # the help comes from the translation bundle next to the commands
     with_env(NEO_LANG: "en") do
       assert_match "iCloud", shell_output("#{bin}/neodu --help")
